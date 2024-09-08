@@ -1,0 +1,111 @@
+/* 页面主容器 */
+.loginPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black; /* 页面主要背景色 */
+}
+
+/* 背景图片限制在一个小的容器内 */
+.centeredBackground {
+  background-image: url("../assets/Login.png"); /* 替换为你的背景图片 */
+  background-size: cover;
+  background-position: center;
+  width: 393px; /* 控制背景图片的宽度 */
+  height: 844px; /* 控制背景图片的高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 20px 0;
+  backdrop-filter: blur(10px); /* 背景模糊 */
+}
+
+/* 表单样式 */
+.formBox {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 340px;
+  margin: auto;
+  height: auto; /* 让高度根据内容自适应 */
+  text-align: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+  /* 添加阴影 */
+}
+
+/* 输入框样式 */
+.formBox input {
+  width: 90%; /* 保证输入框宽度与容器一致 */
+  padding: 9px; /* 增加内边距 */
+  margin-bottom: 15px; /* 输入框之间增加空间 */
+  border: 1px rgba(255, 255, 255, 0.5); /* 添加边框 */
+  background-color: rgba(192, 185, 185, 0.637); /* 背景半透明 */
+  color: white;
+  font-size: 18px;
+  outline: none;
+  border-radius: 8px; /* 圆角效果 */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+input:focus {
+  border: 1px solid #a0522d;
+  box-shadow: 0px 0px 10px rgba(255, 165, 0, 0.7);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 提交按钮样式 */
+.submitBtn {
+  background-color: #a0522d;
+  color: white;
+  padding: 12px 20px; /* 提高按钮内边距，增加触摸区域 */
+  border: none;
+  border-radius: 5px;
+  width: 90%; /* 与输入框宽度保持一致 */
+  margin: 0 auto; /* 水平居中 */
+  margin-top: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px; /* 圆角效果 */
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #8b4513;
+}
+
+.submitBtn:active {
+  background-color: #7a3c10;
+  transform: scale(0.98);
+}
+
+/* 针对小屏幕的响应式设计 */
+@media (max-width: 480px) {
+  .centeredBackground {
+    width: 90%; /* 在小屏幕下减少背景图片的宽度 */
+    height: auto; /* 高度根据内容自动调整 */
+  }
+
+  .formBox {
+    width: 100%; /* 表单宽度填满背景图片 */
+    padding: 15px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  .submitBtn {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

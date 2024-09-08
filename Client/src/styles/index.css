@@ -1,0 +1,76 @@
+@import "../../node_modules/slick-carousel/slick/slick.css";
+@import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a3f27 !important; /* 确保背景色正确应用 */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  height: 100vh !important;
+  width: 100% !important;
+  background-image: none !important;
+}
+
+.loggedHome {
+  padding: 20px;
+  background-color: #0a3f27;
+}
+
+.quizDropdown {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+}
+
+.toggleSwitch {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.active {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* 轮播图样式 */
+.quizCarousel,
+.practiceCarousel {
+  width: 76vw;
+  height: 40vh;
+  background-color: #37624f;
+  margin: 0 auto;
+}
+
+.carouselItem h3,
+.practiceItem h3 {
+  color: #ffffff;
+  font-family: "Ribeye", sans-serif;
+  font-weight: 400;
+}
+
+.carouselItem img,
+.practiceItem img {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.rightBottomImage {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 15%; /* 自定义图片宽度，根据需要调整 */
+}
+
+/* 底部导航栏 */
+.bottomNav {
+  display: flex;
+  justify-content: space-around;
+  width: 76vw;
+  margin: 0 auto;
+  padding: 10px 0;
+  background-color: transparent;
+}
