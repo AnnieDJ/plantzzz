@@ -49,8 +49,15 @@ const LoginRegTabs: React.FC = () => {
     if (response.ok) {
       alert("Login successful!");
       localStorage.setItem("username", data.username);
-      localStorage.setItem("token", data.access_token);
-      navigate("/LoggedHome");
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("user_id", data.user_id);
+      localStorage.setItem("role", data.role);
+      if (data.role === "Admin") {
+        navigate("/AdminLoggedHome");
+      } else {
+        navigate("/LoggedHome");
+      }
     } else {
       alert(`Login failed: ${data.message}`);
     }

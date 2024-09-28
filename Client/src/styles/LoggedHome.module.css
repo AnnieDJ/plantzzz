@@ -286,33 +286,83 @@
 }
 /* 轮播图控制按钮的样式，可以根据需要调整 */
 .slick-dots li button:before {
-  font-size: 10px; /* 控制按钮大小 */
+  font-size: 20px; /* 控制按钮大小 */
   color: white; /* 控制按钮颜色 */
 }
 
-/* 轮播图项目文字样式 */
-.practiceItem h3 {
-  color: #ffffff;
-  font-family: "Ribeye", sans-serif;
-  font-weight: 400;
-  padding: 10px;
-  top: 1px;
-  left: 10px;
-}
-
-/* 底部导航栏 */
 .bottomNav {
   display: flex;
-  justify-content: space-around;
-  width: 90%;
-  margin: 0 auto;
+  justify-content: center; /* 将整个按钮区域居中 */
+  align-items: center; /* 确保按钮垂直居中 */
+  width: 100%;
   padding: 10px 0;
   position: absolute;
-  bottom: 10px; /* 设置与底部的距离 */
-  background-color: transparent;
+  bottom: 0;
+  margin-bottom: 10px; /* 通过 margin-bottom 设置离底部的距离 */
+  gap: 50px; /* 每个按钮之间有 30px 的距离，可以根据需要调整 */
 }
 
-.bottomNav img {
-  width: 30px;
-  height: 30px;
+.navButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.navButton i {
+  margin: 0 10px;
+}
+
+/* 弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modalContent h2 {
+  margin-bottom: 20px;
+}
+
+.modalContent input[type="file"] {
+  margin-bottom: 20px;
+}
+
+.modalContent button {
+  background-color: #37624f;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.loadingSpinner {
+  font-size: 18px;
+  color: white;
+  text-align: center;
+}
+
+.quizDropdown select[disabled] {
+  background-color: #647842; /* 禁用状态下的背景色 */
+}
+
+.quizDropdown select option[disabled] {
+  background-color: #ccc; /* 禁用的选项显示灰色 */
+  color: #888; /* 禁用的选项文字显示灰色 */
 }

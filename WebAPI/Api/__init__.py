@@ -17,7 +17,10 @@ def create_app():
     jwt.init_app(app)
 
     # 配置CORS，支持凭证
-    CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173", "supports_credentials": True}})
+    CORS(app, resources={
+        r"/api/*": {"origins": "http://localhost:5173", "supports_credentials": True},
+        r"/static/*": {"origins": "http://localhost:5173"}  # 允许前端访问静态文件
+    })
 
     from Api.routes import api
     app.register_blueprint(api, url_prefix='/api')  # 确保url_prefix正确

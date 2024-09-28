@@ -28,7 +28,7 @@
   flex-direction: column; /* 内容垂直排列 */
   align-items: center; /* 水平居中对齐 */
   justify-content: center; /* 垂直居中对齐 */
-  margin-top: 200px; /* 调整标题容器的顶部间距 */
+  margin-top: 294px; /* 调整标题容器的顶部间距 */
 }
 
 .homepageTitle {
@@ -42,8 +42,8 @@
 /* 蝴蝶图片的样式 */
 .homepageButterfly {
   position: absolute; /* 绝对定位，使蝴蝶相对于父元素定位 */
-  top: -72px; /* 向上移动50px，使其超出内容区域 */
-  left: 65px; /* 向左移动10px */
+  top: -59px; /* 向上移动50px，使其超出内容区域 */
+  left: 23px; /* 向左移动10px */
   width: 70px; /* 设置宽度 */
   height: auto; /* 自动调整高度，保持比例 */
   z-index: 2; /* 设置图层顺序，确保蝴蝶位于最上层 */

@@ -4,13 +4,11 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #0a3f27 !important; /* 确保背景色正确应用 */
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   height: 100vh !important;
   width: 100% !important;
-  background-image: none !important;
 }
 
 .loggedHome {
