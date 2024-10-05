@@ -6,10 +6,7 @@ interface Question {
   QuestionContent: string;
   PlantImages: string;
   CorrectAnswer: string;
-  AnswerOptionA: string;
-  AnswerOptionB: string;
-  AnswerOptionC: string;
-  AnswerOptionD: string;
+  Options: string[];
 }
 
 const TrainWithAllPlants: React.FC = () => {
@@ -18,7 +15,7 @@ const TrainWithAllPlants: React.FC = () => {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isQuestionVisible, setIsQuestionVisible] = useState(true);
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
@@ -40,12 +37,12 @@ const TrainWithAllPlants: React.FC = () => {
   }, [currentQuestionIndex]);
 
   const handleOptionClick = (
-    option: string,
+    optionIndex: number,
     optionText: string,
     correctAnswer: string
   ) => {
     if (selectedOption === null) {
-      setSelectedOption(option);
+      setSelectedOption(optionIndex);
       const correct = correctAnswer === optionText;
       if (correct) {
         setScore((prevScore) => prevScore + 5);
@@ -79,7 +76,7 @@ const TrainWithAllPlants: React.FC = () => {
       </div>
       <div className={styles.imageContainer}>
         <img
-          src={`/src/assets/plantPic/${currentQuestion.PlantImages}.png`}
+          src={`/src/assets/plantPic/${currentQuestion.PlantImages}`}
           alt="Plant"
           className={styles.plantImage}
         />
@@ -92,33 +89,26 @@ const TrainWithAllPlants: React.FC = () => {
           {currentQuestion.QuestionContent}
         </p>
         <div className={styles.optionsContainer}>
-          {["A", "B", "C", "D"].map((option) => (
+          {currentQuestion.Options.map((option, index) => (
             <button
-              key={`${currentQuestionIndex}-${option}`}
+              key={`${currentQuestionIndex}-${index}`}
               className={`${styles.optionButton} ${
-                selectedOption === option &&
-                (currentQuestion.CorrectAnswer ===
-                currentQuestion[`AnswerOption${option}`]
+                selectedOption === index &&
+                (option === currentQuestion.CorrectAnswer
                   ? styles.correct
                   : styles.incorrect)
               }`}
               style={{
                 backgroundColor:
-                  showCorrectAnswer &&
-                  currentQuestion.CorrectAnswer ===
-                    currentQuestion[`AnswerOption${option}`]
+                  showCorrectAnswer && option === currentQuestion.CorrectAnswer
                     ? "green"
                     : undefined,
               }}
               onClick={() =>
-                handleOptionClick(
-                  option,
-                  currentQuestion[`AnswerOption${option}`],
-                  currentQuestion.CorrectAnswer
-                )
+                handleOptionClick(index, option, currentQuestion.CorrectAnswer)
               }
             >
-              {currentQuestion[`AnswerOption${option}`]}
+              {option}
             </button>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/HomePage.module.css"; // 使用 CSS Modules 方式导入
-import butterflyImage from "../assets/HomePageButterfly.png"; /* 替换为实际路径 */
+import styles from "../styles/HomePage.module.css"; 
+import butterflyImage from "../assets/HomePageButterfly.png"; 
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();

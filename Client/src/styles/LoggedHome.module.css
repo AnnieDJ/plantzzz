@@ -1,4 +1,6 @@
-/* 整个页面容器，模拟手机样式 */
+
+
+
 .homepageHomeContainer {
   display: flex;
   flex-direction: column;
@@ -10,10 +12,10 @@
 }
 
 .homepageInnerContainer {
-  background-image: url("../assets/LoggedBackgroundImg.png"); /* 替换为你的背景图片 */
+  background-image: url("../assets/LoggedBackgroundImg.png");
   background-size: cover;
   background-position: center;
-  width: 393px; /* Main page container, simulating a mobile layout */
+  width: 393px; 
   .homepageHomeContainer {
     display: flex;
     flex-direction: column;
@@ -25,7 +27,7 @@
   }
 
   .homepageInnerContainer {
-    background-image: url("../assets/LoggedBackgroundImg.png"); /* Replace with your background image */
+    background-image: url("../assets/LoggedBackgroundImg.png"); 
     background-size: cover;
     background-position: center;
     width: 393px;
@@ -175,69 +177,69 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-/* 对 h2 标题的修饰 */
+
 .homepageInnerContainer h2 {
   color: #648840;
   font-size: 32px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   text-align: center;
-  position: absolute; /* 让 h2 能够相对于其容器定位 */
-  top: 100px; /* 通过 top 和 left 精确定位到你想要的位置 */
-  left: 20px; /* 适当调整以让其居于红色方框内 */
+  position: absolute; 
+  top: 100px; 
+  left: 20px; 
   margin-bottom: 5px;
 }
 
-/* 下拉菜单 */
+
 .quizDropdown select {
-  appearance: none; /* 去掉默认下拉箭头 */
-  -webkit-appearance: none; /* 针对 Safari */
-  -moz-appearance: none; /* 针对 Firefox */
-  background-color: #556b4a; /* 设置背景颜色 */
-  color: white; /* 设置文字颜色 */
-  padding: 10px 10px; /* 设置内边距，增加按钮的高度 */
-  border: none; /* 移除边框 */
-  border-radius: 5px; /* 圆角边框 */
-  font-size: 18px; /* 设置字体大小 */
-  font-family: "Roboto", sans-serif; /* 设置字体 */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+  appearance: none;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  background-color: #556b4a; 
+  color: white; 
+  padding: 10px 10px; 
+  border: none; 
+  border-radius: 5px; 
+  font-size: 18px; 
+  font-family: "Roboto", sans-serif; 
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); 
   position: relative;
-  cursor: pointer; /* 鼠标悬浮时变成指针 */
+  cursor: pointer; 
   text-align: left;
-  width: 185px; /* 设置宽度以匹配效果图 */
+  width: 185px; 
 }
 
-/* 为下拉菜单添加自定义的箭头 */
+
 .quizDropdown {
   position: absolute;
   top: 13px;
   left: 13px;
   z-index: 900;
-  width: 200px; /* 设置与 select 一致的宽度 */
+  width: 200px; 
 }
 
 .quizDropdown::after {
-  content: "▼"; /* 使用伪元素添加一个下拉箭头 */
+  content: "▼"; 
   font-size: 14px;
-  color: white; /* 设置箭头颜色 */
+  color: white; 
   position: absolute;
-  right: 15px; /* 调整箭头位置 */
+  right: 15px; 
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none; /* 使箭头不影响点击 */
+  pointer-events: none; 
 }
 
-/* 调整选项的样式 */
+
 .quizDropdown select option {
-  background-color: #556b4a; /* 设置选项的背景颜色 */
-  color: white; /* 设置选项的文字颜色 */
+  background-color: #556b4a; 
+  color: white; 
 }
 
-/* Practice 和 Quiz 的切换 */
+
 .toggleSwitch {
   display: flex;
   justify-content: space-around;
-  margin-top: 150px; /* 增加与下拉菜单之间的距离 */
+  margin-top: 150px; 
   margin-bottom: 2px;
 }
 
@@ -249,7 +251,7 @@
   cursor: pointer;
 }
 
-/* 轮播图样式 */
+
 .quizCarousel,
 .practiceCarousel {
   width: 75%;
@@ -258,48 +260,48 @@
   margin: 0 auto;
   border-radius: 15px;
   overflow: hidden;
-  position: relative; /* 确保可以为子元素进行相对定位 */
-  padding-bottom: 20px; /* 为轮播图下方留出空间显示控制按钮 */
-  top: 0px; /* 上移轮播图，调整这个值来控制上移的距离 */
+  position: relative; 
+  padding-bottom: 20px; 
+  top: 0px; 
 }
 
-/* 轮播图项目样式 */
+
 .carouselItem {
-  position: relative; /* 为了使子元素相对定位 */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-/* 使图片自适应容器，并留出控制按钮空间 */
+
 .fullSizeImage {
   width: 100%;
-  height: calc(100% - 20px); /* 减去部分高度用于显示轮播图的按钮 */
-  object-fit: contain; /* 让图片保持比例自适应，同时不会被裁剪 */
-  margin-bottom: 10px; /* 为底部的按钮留出空间 */
+  height: calc(100% - 20px); 
+  object-fit: contain; 
+  margin-bottom: 10px; 
 }
 
-/* 轮播图底部的按钮 */
+
 .slick-dots {
-  bottom: 5px; /* 控制按钮距离轮播图底部的距离 */
+  bottom:10px; 
 }
-/* 轮播图控制按钮的样式，可以根据需要调整 */
+
 .slick-dots li button:before {
-  font-size: 20px; /* 控制按钮大小 */
-  color: white; /* 控制按钮颜色 */
+  font-size: 20px; 
+  color: white; 
 }
 
 .bottomNav {
   display: flex;
-  justify-content: center; /* 将整个按钮区域居中 */
-  align-items: center; /* 确保按钮垂直居中 */
+  justify-content: center; 
+  align-items: center; 
   width: 100%;
   padding: 10px 0;
   position: absolute;
   bottom: 0;
-  margin-bottom: 10px; /* 通过 margin-bottom 设置离底部的距离 */
-  gap: 50px; /* 每个按钮之间有 30px 的距离，可以根据需要调整 */
+  margin-bottom: 10px; 
+  gap: 50px; 
 }
 
 .navButton {
@@ -314,14 +316,14 @@
   margin: 0 10px;
 }
 
-/* 弹窗样式 */
+
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  background-color: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -359,10 +361,10 @@
 }
 
 .quizDropdown select[disabled] {
-  background-color: #647842; /* 禁用状态下的背景色 */
+  background-color: #647842; 
 }
 
 .quizDropdown select option[disabled] {
-  background-color: #ccc; /* 禁用的选项显示灰色 */
-  color: #888; /* 禁用的选项文字显示灰色 */
+  background-color: #ccc; 
+  color: #888; 
 }

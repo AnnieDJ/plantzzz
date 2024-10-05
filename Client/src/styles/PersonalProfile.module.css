@@ -1,36 +1,36 @@
-/* 页面主容器 */
+/* PersonalProfile.module.css */
+
 .ProfilePageContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  background-color: black; /* 页面主要背景色 */
+  background-color: black;
 }
 
-/* 深绿色背景的容器居中显示 */
 .pageContainer {
   background-size: cover;
   background-position: center;
-  width: 393px; /* 控制背景图片的宽度 */
-  height: 844px; /* 控制背景图片的高度 */
+  width: 100%;
+  max-width: 393px;
+  min-height: 100vh;
   background-color: #0a3f27;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 内容靠上 */
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* 添加阴影效果 */
-  border-radius: 20px; /* 圆角 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
   padding: 20px 0;
   position: relative;
-  margin-top: -30px; /* 整体向上移动 */
 }
 
-/* 头部返回按钮 */
 .profileHeader {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  padding: 10px 0;
 }
 
 .backButton {
@@ -40,126 +40,104 @@
   font-size: 2rem;
   cursor: pointer;
   padding: 10px;
-  margin-top: 80px; /* 通过增加 margin-top 将按钮向下移动 */
-  margin-left: 20px; /* 通过增加 margin-left 将按钮向右移动 */
+  margin-left: 20px;
 }
 
 .avatar {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  margin-top: 0px;
   color: white;
-  cursor: pointer; /* 添加手型鼠标指针，提示可点击 */
+  cursor: pointer;
 }
 
-/* 添加头像图片的样式 */
 .avatarImage {
-  width: 130px;
-  height: 130px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* 用户信息容器（按钮化） */
 .userInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 垂直居中 */
-  align-items: center; /* 水平居中 */
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  gap: 15px; /* 设置子元素之间的间距 */
+  gap: 15px;
+  margin-bottom: 80px; /* Add space for bottom navigation */
 }
 
 .userInfo button {
-  background-color: #37624f; /* 背景颜色 */
+  background-color: #37624f;
   color: white;
   border-radius: 8px;
-  padding: 8px;
-  font-size: 1.5rem;
+  padding: 12px 15px;
+  font-size: 1.2rem;
   width: 80%;
   display: flex;
-  justify-content: flex-start; /* 图标靠左 */
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+  text-align: left;
   border: none;
   cursor: pointer;
-  margin: 10px 0; /* 每个框之间有一致的间距 */
-  position: relative;
 }
 
-/* 确保图标和文字之间的间距 */
 .userInfo button i {
-  margin-right: 30px;
+  margin-right: 15px;
+  width: 20px;
+  text-align: center;
 }
 
-.btn i {
-  margin-right: 10px; /* 图标和文字之间的距离 */
-}
-
-/* 按钮特定样式 */
-.changePassword {
-  background-color: #37624f; /* 按钮绿色背景 */
-}
-
-.logout {
-  background-color: #37624f; /* 红色背景按钮 */
-}
-
-/* 底部导航 */
 .bottomNav {
   display: flex;
-  justify-content: center; /* 将整个按钮区域居中 */
-  align-items: center; /* 确保按钮垂直居中 */
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
   padding: 10px 0;
   position: absolute;
   bottom: 0;
-  margin-bottom: 10px; /* 通过 margin-bottom 设置离底部的距离 */
-  gap: 50px; /* 每个按钮之间有 50px 的距离，可以根据需要调整 */
+  background-color: #0a3f27;
+  border-top: 1px solid #1a5f3f;
 }
 
 .navButton {
   background: none;
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
+  padding: 10px;
 }
 
-.navButton i {
-  margin: 0 10px;
-}
-
-/* 弹窗样式 */
+/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* 弹窗内容样式 */
 .modalContent {
-  background-color: #f0f8ff; /* 浅蓝色背景 */
+  background-color: #f0f8ff;
   padding: 30px;
-  border-radius: 12px; /* 圆角边框 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px; /* 设置固定宽度 */
-  max-width: 100%; /* 保证适配小屏幕 */
+  width: 300px;
+  max-width: 90%;
 }
 
 .modalContent h2 {
   margin-bottom: 20px;
   font-size: 1.5rem;
-  color: #333; /* 深色字体 */
+  color: #333;
 }
 
 .passwordInput {
@@ -170,16 +148,16 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 1rem;
-  color: #333; /* 设置字体颜色 */
-  background-color: #fff; /* 背景颜色 */
+  color: #333;
+  background-color: #fff;
 }
 
 .passwordInput::placeholder {
-  color: #aaa; /* 提示语颜色 */
+  color: #aaa;
 }
 
 .modalButton {
-  background-color: #ffcc00; /* 按钮背景色 */
+  background-color: #ffcc00;
   color: #333;
   border: none;
   padding: 10px 20px;
@@ -190,7 +168,7 @@
 }
 
 .modalButton:hover {
-  background-color: #e6b800; /* 悬停效果 */
+  background-color: #e6b800;
 }
 
 .successMessage {
@@ -203,26 +181,51 @@
   margin-top: 10px;
 }
 
-/* 上传结果的弹窗样式 */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 半透明背景 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+/* Responsive design */
+@media (max-width: 600px) {
+  .ProfilePageContainer {
+    padding: 0;
+  }
+
+  .pageContainer {
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .backButton {
+    margin-left: 10px;
+  }
+
+  .avatarImage {
+    width: 80px;
+    height: 80px;
+  }
+
+  .userInfo button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .bottomNav {
+    padding: 5px 0;
+  }
+
+  .navButton {
+    font-size: 1.2rem;
+  }
+
+  .modalContent {
+    width: 90%;
+  }
+
+  .passwordInput {
+    font-size: 0.9rem;
+  }
+
+  .modalButton {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
 }
 
-.modalContent {
-  background-color: #f0f8ff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-size: 1.2rem;
-  color: #333;
-}
+

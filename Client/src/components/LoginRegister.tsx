@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Tabs } from "antd"; // 引入 Ant Design 的 Tabs 组件
+import { Tabs } from "antd";
 import { useNavigate } from "react-router-dom";
-import "antd/dist/reset.css"; // 引入 Ant Design 的全局样式
+import axios from "axios"; 
+import "antd/dist/reset.css";
 import styles from "../styles/LoginRegister.module.css";
+import backendUrl from "../config";
 
 const { TabPane } = Tabs;
 
@@ -11,42 +13,71 @@ const LoginRegTabs: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate(); // 用于页面跳转
+  const navigate = useNavigate();
+
 
   const handleSignUp = async () => {
-    const response = await fetch("http://localhost:5000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "cors",
-      credentials: "include",
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-        confirm_password: confirmPassword,
-      }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
+    try {
+      
+      const response = await axios.post(
+        `${backendUrl}/api/auth/register`,
+        {
+          username,
+          email,
+          password,
+          confirm_password: confirmPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, 
+        }
+      );
+  
       alert("Registration successful!");
+  
+    
+      const loginResponse = await axios.post(
+        `${backendUrl}/api/auth/login`,
+        {
+          username,
+          password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+  
+      const loginData = loginResponse.data;
+      localStorage.setItem("username", loginData.username);
+      localStorage.setItem("email", loginData.email);
+      localStorage.setItem("access_token", loginData.access_token);
+      localStorage.setItem("user_id", loginData.user_id);
+      localStorage.setItem("role", loginData.role);
       navigate("/LoggedHome");
-    } else {
-      alert(`Registration failed: ${data.message}`);
+    } catch (error) {
+      alert(
+        `Registration or login failed: ${error.response?.data?.message || error.message}`
+      );
     }
   };
+  
 
   const handleLogin = async () => {
-    const response = await fetch("http://127.0.0.1:5000/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
+    try {
+      const response = await axios.post(
+        `${backendUrl}/api/auth/login`,
+        {
+          username,
+          password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
-    const data = await response.json();
-    if (response.ok) {
+      const data = response.data;
       alert("Login successful!");
       localStorage.setItem("username", data.username);
       localStorage.setItem("email", data.email);
@@ -58,8 +89,9 @@ const LoginRegTabs: React.FC = () => {
       } else {
         navigate("/LoggedHome");
       }
-    } else {
-      alert(`Login failed: ${data.message}`);
+    } catch (error) {
+      // 处理错误
+      alert(`Login failed: ${error.response?.data?.message || error.message}`);
     }
   };
 

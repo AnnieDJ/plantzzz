@@ -1,0 +1,11 @@
+.venv/
+.vscode/
+__pycache__/
+.git/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.md
+*.txt
+*.csv

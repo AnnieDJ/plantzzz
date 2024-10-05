@@ -1,0 +1,84 @@
+/* LeaderBoard.module.css */
+
+.container {
+  max-width: 393px; /* Simulate mobile size */
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  height: 844px; /* Simulate mobile height */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.title {
+  margin-left: 10px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #2b4840;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.timePeriod {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.timeLabel {
+  background-color: #f4b942;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.leaderboardTable {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.leaderboardTable th {
+  background-color: #f4b942;
+  padding: 10px;
+  text-align: left;
+}
+
+.leaderboardTable td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.userRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: #f4b942;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.userRank {
+  font-size: 18px;
+}
+
+.userName {
+  font-size: 18px;
+}
+
+.userPoints {
+  font-size: 18px;
+}

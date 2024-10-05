@@ -1,52 +1,56 @@
-/* 设置容器的最大高度和宽度 */
+/* BlankFillingQuiz.module.css */
+
+
 .container {
   text-align: center;
   font-family: Arial, sans-serif;
   padding: 20px;
-  max-width: 393px; /* 模拟手机大小 */
-  height: 844px; /* 高度限制 */
+  width: 100%; 
+  max-width: 393px; 
+  height: auto; 
   background-color: #37624f;
-  border: 5px solid black; /* 添加黑框背景 */
-  overflow: hidden; /* 禁止滚动 */
-  margin: 0 auto; /* 居中页面 */
-  border-radius: 15px; /* 添加边角圆滑 */
+  border: 5px solid black; 
+  overflow: hidden; 
+  margin: 0 auto; 
+  border-radius: 15px; 
   position: relative;
 }
 
-/* 分数按钮样式 */
+
 .quizHeader p {
-  font-size: 1rem; /* 调整字体大小为适中的按钮大小 */
+  font-size: 1rem; 
   background-color: #4caf50;
   border-radius: 50%;
-  padding: 5px 10px; /* 调整内边距以缩小按钮 */
+  padding: 5px 10px; 
   color: white;
   position: absolute;
-  top: 10px; /* 确保按钮在顶部 */
-  right: 10px; /* 确保按钮靠右 */
-  z-index: 1000; /* 提高 z-index 确保按钮显示在最上方 */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+  top: 10px; 
+  right: 10px; 
+  z-index: 1000; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* 调整图片容器的样式，确保分数和图片不重叠 */
+
 .imageContainer {
   position: relative;
-  max-height: 40vh;
+  max-height: 40vh; 
   overflow: hidden;
-  margin-top: 70px; /* 留出空间避免按钮被图片覆盖 */
-  animation: popIn 1s ease-out; /* 图片弹出效果 */
+  margin-top: 70px; 
+  animation: popIn 1s ease-out; 
 }
 
-/* 图片的样式 */
+
 .plantImage {
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 10px;
-  animation: fadeIn 1s ease-in; /* 图片的淡入效果 */
+  animation: fadeIn 1s ease-in; 
 }
+
 
 .questionCounter {
   position: absolute;
@@ -59,11 +63,11 @@
   font-size: 0.9rem;
 }
 
-/* 问题部分 */
+
 .questionContainer {
   margin-top: 20px;
   font-size: 1.5rem;
-  animation: fadeIn 1s ease-in; /* 问题的淡入效果 */
+  animation: fadeIn 1s ease-in; 
 }
 
 .questionPrompt {
@@ -71,32 +75,40 @@
   font-weight: bold;
   margin-bottom: 10px;
   color: #fff;
-  animation: fadeOut 1s ease-in 3s forwards; /* 问题的淡出效果 */
+  animation: fadeOut 1s ease-in 3s forwards; 
 }
 
-.optionsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: slideInRight 0.4s ease-in; /* 选项从右侧飞入 */
+
+.answerInput {
+  width: 80%; 
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 18px; 
 }
 
-.optionButton {
+
+.submitButton {
   background-color: #b5651d;
   color: white;
   padding: 10px;
   border: none;
   border-radius: 10px;
-  font-size: 18px;
-  margin: 5px 0;
-  width: 100%;
-  max-width: 300px;
+  font-size: 18px; 
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%; 
+  max-width: 300px; 
+}
+
+.submitButton:hover {
+  background-color: #965b20; 
 }
 
 
-/* 淡入动画 */
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -106,7 +118,7 @@
   }
 }
 
-/* 淡出动画 */
+
 @keyframes fadeOut {
   from {
     opacity: 1;
@@ -116,36 +128,7 @@
   }
 }
 
-/* 从右侧飞入的动画 */
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
 
-/* 分数震动动画 */
-@keyframes shake {
-  0% {
-    transform: translateX(0px);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-
-/* 弹出效果 */
 @keyframes popIn {
   0% {
     transform: scale(0.5);
@@ -157,45 +140,56 @@
   }
 }
 
+
 .timer {
-  color: white; /* 设置文本颜色为白色 */
-  font-size: 25px; /* 可以设置适当的字体大小 */
-  font-weight: bold; /* 可选：设置字体为粗体 */
+  color: white; 
+  font-size: 25px; 
+  font-weight: bold; 
 }
 
 
+@media (max-width: 600px) {
+  .container {
+    padding: 10px; 
+    border: 3px solid black; 
+  }
 
-/* 按钮样式调整 */
-.submitButton, .nextButton {
-  margin-top: 20px; /* 增加上边距以向下移动按钮 */
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
+  .quizHeader p {
+    font-size: 1rem; 
+    padding: 4px 8px; 
+    top: 5px; 
+    right: 5px; 
+  }
+
+  .imageContainer {
+    margin-top: 40px; 
+  }
+
+  .questionContainer {
+    font-size: 1.2rem; 
+  }
+
+  .questionPrompt {
+    font-size: 20px; 
+  }
+
+  .answerInput {
+    font-size: 16px; 
+    padding: 8px; 
+  }
+
+  .submitButton {
+    font-size: 16px; 
+    padding: 8px; 
+    max-width: 90%; 
+  }
+
+  .questionCounter {
+    font-size: 0.8rem; 
+    padding: 4px; 
+  }
+
+  .timer {
+    font-size: 20px; 
+  }
 }
-
-/* Next按钮的特定样式 */
-.nextButton {
-  background-color: #ff8c00; /* 橘黄色背景 */
-}
-
-.nextButton:hover {
-  background-color: #ff7f00; /* 鼠标悬停时稍暗一些的橘黄色 */
-}
-
-/* 显示正确答案的文本样式 */
-.correctAnswer {
-  color: white; /* 设置文字颜色为白色 */
-  margin-top: 20px; /* 根据需要调整距离 */
-  font-size: 25px; /* 调整字体大小 */
-  font-weight: bold; /* 加粗字体 */
-}
-
-/* 调整问题容器的内边距以避免内容紧贴边缘 */
-.questionContainer {
-  padding: 0 10px;
-}
-
-/* 示例动画和其他元素的样式可能也需要相应调整 */

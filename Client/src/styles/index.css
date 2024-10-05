@@ -60,10 +60,10 @@ body {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  width: 15%; /* 自定义图片宽度，根据需要调整 */
+  width: 15%; 
 }
 
-/* 底部导航栏 */
+
 .bottomNav {
   display: flex;
   justify-content: space-around;

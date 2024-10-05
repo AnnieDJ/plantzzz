@@ -9,7 +9,7 @@ import SingleChoiceQuiz from "./components/SingleChoiceQuiz";
 import BlankFillingQuiz from "./components/BlankFillingQuiz";
 import TrueOrFalseQuiz from "./components/TrueOrFalseQuiz";
 import AdminLoggedHome from "./components/AdminLoggedHome";
-
+import LeaderBoard from "./components/LeaderBoard";
 function App() {
   return (
     <Router>
@@ -18,6 +18,7 @@ function App() {
         <Route path="/auth" element={<LoginRegTabs />} />
         <Route path="/LoggedHome" element={<LoggedHome />} />
         <Route path="/AdminLoggedHome" element={<AdminLoggedHome />} />
+        <Route path="/AdminLoggedHome/Profile" element={<PersonalProfile />} />
         <Route
           path="/LoggedHome/Train-with-allPlants"
           element={<TrainWithAllPlants />}
@@ -28,17 +29,18 @@ function App() {
         />
       </Routes>
       <Routes>
+        <Route path="/LoggedHome/LeaderBoard" element={<LeaderBoard />} />
         <Route
           path="/LoggedHome/single-choice-quiz"
           element={<SingleChoiceQuiz />}
         />
         <Route
           path="/LoggedHome/Blank-Filling-Quiz"
-          element={<BlankFillingQuiz />} // 使用正确的组件名
+          element={<BlankFillingQuiz />} 
         />
         <Route
           path="/LoggedHome/True-Or-False-Quiz"
-          element={<TrueOrFalseQuiz />} // 使用正确的组件名
+          element={<TrueOrFalseQuiz />} 
         />
       </Routes>
     </Router>

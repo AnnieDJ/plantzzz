@@ -1,184 +1,227 @@
-/* 设置容器的最大高度和宽度 */
+/* SingleChoiceQuiz.module.css */
+
 .container {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 393px; /* 模拟手机大小 */
-    height: 844px; /* 高度限制 */
-    background-color: #37624f;
-    border: 5px solid black; /* 添加黑框背景 */
-    overflow: hidden; /* 禁止滚动 */
-    margin: 0 auto; /* 居中页面 */
-    border-radius: 15px; /* 添加边角圆滑 */
-    position: relative;
-  }
-  
-  /* 分数按钮样式 */
-  .quizHeader p {
-    font-size: 1rem; /* 调整字体大小为适中的按钮大小 */
-    background-color: #4caf50;
-    border-radius: 50%;
-    padding: 5px 10px; /* 调整内边距以缩小按钮 */
-    color: white;
-    position: absolute;
-    top: 10px; /* 确保按钮在顶部 */
-    right: 10px; /* 确保按钮靠右 */
-    z-index: 1000; /* 提高 z-index 确保按钮显示在最上方 */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* 调整图片容器的样式，确保分数和图片不重叠 */
-  .imageContainer {
-    position: relative;
-    max-height: 40vh;
-    overflow: hidden;
-    margin-top: 70px; /* 留出空间避免按钮被图片覆盖 */
-    animation: popIn 1s ease-out; /* 图片弹出效果 */
-  }
-  
-  /* 图片的样式 */
-  .plantImage {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    animation: fadeIn 1s ease-in; /* 图片的淡入效果 */
-  }
-  
-  .questionCounter {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-  }
-  
-  /* 问题部分 */
-  .questionContainer {
-    margin-top: 20px;
-    font-size: 1.5rem;
-    animation: fadeIn 1s ease-in; /* 问题的淡入效果 */
-  }
-  
-  .questionPrompt {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #fff;
-    animation: fadeOut 1s ease-in 3s forwards; /* 问题的淡出效果 */
-  }
-  
-  .optionsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: slideInRight 0.4s ease-in; /* 选项从右侧飞入 */
-  }
-  
-  .optionButton {
-    background-color: #b5651d;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    margin: 5px 0;
-    width: 100%;
-    max-width: 300px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .optionButton:hover {
-    background-color: #965b20;
-  }
-  
-  /* 正确选项样式，带有淡入动画 */
-  .correct {
-    background-color: green !important;
-    animation: fadeIn 0.5s ease-in;
-  }
-  
-  /* 错误选项样式，带有震动动画 */
-  .incorrect {
-    background-color: red !important;
-    animation: shake 0.5s ease-out;
-  }
-  
-  /* 动画效果 */
-  
-  /* 淡入动画 */
-  @keyframes fadeIn {
-    from {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  width: 100%;
+  max-width: 393px;
+  height: auto; 
+  background-color: #37624f;
+  border: 5px solid black; 
+  overflow: hidden; 
+  margin: 0 auto;
+  border-radius: 15px; 
+  position: relative;
+}
+
+
+.quizHeader p {
+  font-size: 1rem; 
+  background-color: #4caf50;
+  border-radius: 50%;
+  padding: 5px 10px; 
+  color: white;
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  z-index: 1000; 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); 
+  align-items: center;
+  justify-content: center;
+}
+
+
+.imageContainer {
+  position: relative;
+  max-height: 40vh; 
+  overflow: hidden;
+  margin-top: 70px;
+  animation: popIn 1s ease-out; 
+}
+
+
+.plantImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  animation: fadeIn 1s ease-in; 
+}
+
+
+.questionCounter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+
+.questionContainer {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  animation: fadeIn 1s ease-in; 
+}
+
+.questionPrompt {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+  animation: fadeOut 1s ease-in 3s forwards;
+}
+
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slideInRight 0.4s ease-in; 
+}
+
+
+.optionButton {
+  background-color: #b5651d;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px; 
+  margin: 5px 0;
+  width: 100%; 
+  max-width: 300px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.optionButton:hover {
+  background-color: #965b20;
+}
+
+
+.correct {
+  background-color: green !important;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.incorrect {
+  background-color: red !important;
+  animation: shake 0.5s ease-out;
+}
+
+
+
+
+@keyframes fadeIn {
+  from {
       opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
-  
-  /* 淡出动画 */
-  @keyframes fadeOut {
-    from {
+  to {
       opacity: 1;
-    }
-    to {
+  }
+}
+
+
+@keyframes fadeOut {
+  from {
+      opacity: 1;
+  }
+  to {
       opacity: 0;
-    }
   }
-  
-  /* 从右侧飞入的动画 */
-  @keyframes slideInRight {
-    from {
+}
+
+
+@keyframes slideInRight {
+  from {
       transform: translateX(100%);
-    }
-    to {
+  }
+  to {
       transform: translateX(0);
-    }
   }
-  
-  /* 分数震动动画 */
-  @keyframes shake {
-    0% {
+}
+
+
+@keyframes shake {
+  0% {
       transform: translateX(0px);
-    }
-    25% {
+  }
+  25% {
       transform: translateX(-5px);
-    }
-    50% {
+  }
+  50% {
       transform: translateX(5px);
-    }
-    75% {
-      transform: translateX(-5px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
   }
-  
-  /* 弹出效果 */
-  @keyframes popIn {
-    0% {
+  75% {
+      transform: translateX(-5px);
+  }
+  100% {
+      transform: translateX(0px);
+  }
+}
+
+
+@keyframes popIn {
+  0% {
       transform: scale(0.5);
       opacity: 0;
-    }
-    100% {
+  }
+  100% {
       transform: scale(1);
       opacity: 1;
-    }
   }
-  
+}
+
+
+.timer {
+  color: white; 
+  font-size: 25px; 
+  font-weight: bold; 
+}
+
+
+@media (max-width: 600px) {
+  .container {
+      padding: 10px; 
+      border: 3px solid black; 
+  }
+
+  .quizHeader p {
+      font-size: 1rem; 
+      padding: 4px 8px; 
+      top: 5px; 
+      right: 5px; 
+  }
+
+  .imageContainer {
+      margin-top: 40px;
+  }
+
+  .questionContainer {
+      font-size: 1.2rem; 
+  }
+
+  .questionPrompt {
+      font-size: 20px; 
+  }
+
+  .optionButton {
+      font-size: 16px; 
+      padding: 8px; 
+      max-width: 90%; 
+  }
+
+  .questionCounter {
+      font-size: 0.8rem; 
+      padding: 4px; 
+  }
+
   .timer {
-    color: white; /* 设置文本颜色为白色 */
-    font-size: 25px; /* 可以设置适当的字体大小 */
-    font-weight: bold; /* 可选：设置字体为粗体 */
-    
+      font-size: 20px; 
   }
-  
-  
+}

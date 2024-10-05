@@ -3,28 +3,26 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import styles from "../styles/PersonalProfile.module.css";
 import { useNavigate } from "react-router-dom";
+import backendUrl from "../config";
 
 const UserProfile = () => {
   const username = localStorage.getItem("username") || "username";
   const email = localStorage.getItem("email") || "12345@example.com";
 
-  // 添加头像相关的状态和引用
   const [avatarUrl, setAvatarUrl] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const backendUrl = "http://localhost:5000"; // 后端服务器的地址
 
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // 新增状态用于区分消息类型（成功或错误）
+  const [messageType, setMessageType] = useState("");
 
-  const [uploadMessage, setUploadMessage] = useState(""); // 用于显示上传头像的消息
-  const [showUploadModal, setShowUploadModal] = useState(false); // 控制提示弹窗的显示
+  const [uploadMessage, setUploadMessage] = useState("");
+  const [showUploadModal, setShowUploadModal] = useState(false);
 
   const navigate = useNavigate();
 
-  // 获取头像URL
   useEffect(() => {
     const fetchAvatar = async () => {
       try {
@@ -33,7 +31,7 @@ const UserProfile = () => {
           console.error("No access token available.");
           return;
         }
-        const response = await fetch(`${backendUrl}/api/get_avatar`, {
+        const response = await fetch(`${backendUrl}/api/auth/get_avatar`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -52,7 +50,11 @@ const UserProfile = () => {
   }, [backendUrl]);
 
   const handleBackClick = () => {
-    navigate("/LoggedHome");
+    if (localStorage.getItem("role") === "Admin") {
+      navigate("/AdminLoggedHome");
+    } else {
+      navigate("/LoggedHome");
+    }
   };
 
   const handleCloseModal = () => {
@@ -68,7 +70,6 @@ const UserProfile = () => {
   };
 
   const handlePasswordSubmit = async () => {
-    // 重置消息
     setPasswordMessage("");
     setMessageType("");
 
@@ -88,7 +89,7 @@ const UserProfile = () => {
     }
 
     try {
-      const response = await fetch(`${backendUrl}/api/change_password`, {
+      const response = await fetch(`${backendUrl}/api/auth/change_password`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,15 +105,14 @@ const UserProfile = () => {
       if (response.ok) {
         setPasswordMessage("Password changed successfully.");
         setMessageType("success");
-        // 清理输入框
+
         setNewPassword("");
         setConfirmNewPassword("");
-        // 关闭弹窗延迟以显示成功信息
+
         setTimeout(() => {
           handleCloseModal();
-        }, 2000); // 2秒后关闭弹窗
+        }, 2000);
       } else {
-        // 根据后端返回的状态码调整消息
         switch (response.status) {
           case 400:
             setPasswordMessage(data.message || "Invalid request.");
@@ -136,14 +136,12 @@ const UserProfile = () => {
     }
   };
 
-  // 处理头像点击，触发文件选择
   const handleAvatarClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
 
-  // 处理文件选择
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -151,13 +149,12 @@ const UserProfile = () => {
     }
   };
 
-  // 上传头像到后端
   const uploadAvatar = async (file: File) => {
     const formData = new FormData();
     formData.append("avatar", file);
 
     try {
-      const response = await fetch(`${backendUrl}/api/upload_avatar`, {
+      const response = await fetch(`${backendUrl}/api/auth/upload_avatar`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -168,20 +165,24 @@ const UserProfile = () => {
       if (response.ok) {
         const data = await response.json();
         setAvatarUrl(backendUrl + data.avatar_url);
-        setUploadMessage("Avatar uploaded successfully!"); // 上传成功消息
+        setUploadMessage("Avatar uploaded successfully!");
       } else {
-        setUploadMessage("Failed to upload avatar."); // 上传失败消息
+        setUploadMessage("Failed to upload avatar.");
       }
     } catch (error) {
-      setUploadMessage("Error uploading avatar."); // 处理错误
+      setUploadMessage("Error uploading avatar.");
     }
 
-    setShowUploadModal(true); // 显示上传消息弹窗
+    setShowUploadModal(true);
 
-    // 3秒后自动关闭上传弹窗
     setTimeout(() => {
       setShowUploadModal(false);
     }, 3000);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
   };
 
   return (
@@ -216,7 +217,6 @@ const UserProfile = () => {
           />
         </div>
 
-        {/* 修改密码弹窗 */}
         {showPasswordModal && (
           <div className={styles.modal}>
             <div className={styles.modalContent}>
@@ -259,7 +259,6 @@ const UserProfile = () => {
           </div>
         )}
 
-        {/* 上传头像结果提示弹窗 */}
         {showUploadModal && (
           <div className={styles.modal}>
             <div className={styles.modalContent}>
@@ -282,12 +281,15 @@ const UserProfile = () => {
           >
             <i className="fas fa-lock"></i> <span>Change Password</span>
           </button>
-          <button className={`${styles.btn} ${styles.logout}`} title="Log out">
+          <button
+            className={`${styles.btn} ${styles.logout}`}
+            title="Log out"
+            onClick={handleLogout}
+          >
             <i className="fas fa-sign-out-alt"></i> <span>Log out</span>
           </button>
         </div>
 
-        {/* 底部导航 */}
         <div className={styles.bottomNav}>
           <button className={styles.navButton} title="Go to home">
             <i className="fas fa-home"></i>

@@ -1,8 +1,10 @@
 from . import db
-from werkzeug.security import generate_password_hash, check_password_hash  # 导入 check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash 
+from datetime import datetime
+
 
 class User(db.Model):
-    __tablename__ = 'Users'  # 匹配数据库中的表名
+    __tablename__ = 'Users' 
 
     id = db.Column(db.Integer, primary_key=True, name='UserID')
     username = db.Column(db.String(255), unique=True, nullable=False, name='Username')
@@ -17,39 +19,58 @@ class User(db.Model):
         return check_password_hash(self.hashed_password, password)
 
 
-class Score(db.Model):
-    __tablename__ = 'Scores'  # 假设这个表的名字也是这样
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('Users.UserID'), nullable=False)
-    score = db.Column(db.Integer, nullable=False)
+class User_Answers(db.Model):
+    __tablename__ = 'User_Answers'
+    AnswerID = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    UserID = db.Column(db.Integer, db.ForeignKey('Users.UserID'), nullable=True)
+    QuestionID = db.Column(db.Integer, db.ForeignKey('Questions.QuestionID'), nullable=True)
+    SubmitTime = db.Column(db.DateTime, default=datetime.utcnow)
+    TotalSingleScore = db.Column(db.Integer, default=0)
+    TotalTrueFalseScore = db.Column(db.Integer, default=0)
+    TotalFillBlankScore = db.Column(db.Integer, default=0)
 
+    def to_dict(self):
+        return {
+            "AnswerID": self.AnswerID,
+            "UserID": self.UserID,
+            "QuestionID": self.QuestionID,
+            "SubmitTime": self.SubmitTime.strftime('%d/%m/%y %H:%M') if self.SubmitTime else None,
+            "TotalSingleScore": self.TotalSingleScore,
+            "TotalTrueFalseScore": self.TotalTrueFalseScore,
+            "TotalFillBlankScore": self.TotalFillBlankScore,
+        }
+
+
+
+class Score(db.Model):
+    __tablename__ = 'Scores'  
+    ScoreID = db.Column(db.Integer, primary_key=True)
+    UserID = db.Column(db.Integer, db.ForeignKey('Users.UserID'), nullable=False)
+    TotalScore = db.Column(db.Integer, nullable=False)
+    Rank = db.Column(db.Integer, nullable=True)
+    def to_dict(self):
+        return {
+            "ScoreID": self.ScoreID,
+            "UserID": self.UserID,
+            "TotalScore": self.TotalScore,
+            "Rank": self.Rank,
+        }
+    
 
 class Question(db.Model):
-    __tablename__ = 'Questions'  # 匹配数据库中的表名
+    __tablename__ = 'Questions' 
 
     QuestionID = db.Column(db.Integer, primary_key=True, autoincrement=True, name='QuestionID')
     QuestionContent = db.Column(db.Text, nullable=False, name='QuestionContent')
-    QuestionType = db.Column(db.Enum('Single', 'True/False', 'Fill-in-the-blank'), nullable=False, name='QuestionType')
-
-    AnswerOptionA = db.Column(db.Text, name='AnswerOptionA')
-    AnswerOptionB = db.Column(db.Text, name='AnswerOptionB')
-    AnswerOptionC = db.Column(db.Text, name='AnswerOptionC')
-    AnswerOptionD = db.Column(db.Text, name='AnswerOptionD')
-
     CorrectAnswer = db.Column(db.Text, nullable=False, name='CorrectAnswer')
     PlantImages = db.Column(db.String(255), nullable=False, name='PlantImages')
     Term = db.Column(db.Integer, nullable=False, name='Term')
 
-    # 将对象转换为字典，方便返回给前端
+  
     def to_dict(self):
         return {
             'QuestionID': self.QuestionID,
             'QuestionContent': self.QuestionContent,
-            'QuestionType': self.QuestionType,
-            'AnswerOptionA': self.AnswerOptionA,
-            'AnswerOptionB': self.AnswerOptionB,
-            'AnswerOptionC': self.AnswerOptionC,
-            'AnswerOptionD': self.AnswerOptionD,
             'CorrectAnswer': self.CorrectAnswer,
             'PlantImages': self.PlantImages,
             'Term': self.Term
